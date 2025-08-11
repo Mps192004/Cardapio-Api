@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/contatos';
+const API_URL = 'https://crud-api-p93b.onrender.com/api/contatos';
 
 // Elementos DOM
 const form = document.getElementById('form-contato');
