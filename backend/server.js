@@ -1,9 +1,17 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+//const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+
+const cors = require('cors');
+app.use(cors({
+  origin: ['https://crud-api-p93b.onrender.com', 'https://crud-api-wheat-mu.vercel.app/'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 // Middleware
 app.use(cors());
