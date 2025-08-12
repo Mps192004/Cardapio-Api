@@ -8,7 +8,7 @@ let idEditando = null; // Para controlar se está editando
 // Carregar contatos
 async function carregarContatos() {
   try {
-    const resposta = await fetch(`${API_BASE_URL}/contatos`);
+    const resposta = await fetch(`${API_BASE_URL}/cardapio`);
     const contatos = await resposta.json();
 
     tabela.innerHTML = '';
@@ -17,9 +17,9 @@ async function carregarContatos() {
       const linha = document.createElement('tr');
 
       linha.innerHTML = `
-        <td>${contato.nome}</td>
-        <td>${contato.email || ''}</td>
-        <td>${contato.telefone || ''}</td>
+        <td>${contato.nome_comida}</td>
+        <td>${contato.bebidas || ''}</td>
+        <td>${contato.sobremesas || ''}</td>
         <td>
           <button class="editar" onclick="editarContato('${contato._id}')">Editar</button>
           <button class="excluir" onclick="excluirContato('${contato._id}')">Excluir</button>
@@ -29,7 +29,7 @@ async function carregarContatos() {
       tabela.appendChild(linha);
     });
   } catch (error) {
-    alert('Erro ao carregar contatos: ' + error.message);
+    alert('Erro ao carregar Cardapio: ' + error.message);
   }
 }
 
@@ -37,16 +37,16 @@ async function carregarContatos() {
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const nome = document.getElementById('nome').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const telefone = document.getElementById('telefone').value.trim();
+  const nome_comida = document.getElementById('nome').value.trim();
+  const bebidas = document.getElementById('email').value.trim();
+  const sobremesas = document.getElementById('telefone').value.trim();
 
-  if (!nome) {
-    alert('O nome é obrigatório');
+  if (!nome_comida) {
+    alert('O nome da comida é obrigatório');
     return;
   }
 
-  const contato = { nome, email, telefone };
+  const contato = { nome_comida, bebidas, sobremesas };
 
   try {
     let resposta;
@@ -69,19 +69,19 @@ form.addEventListener('submit', async (e) => {
       throw new Error(erro.mensagem || 'Erro desconhecido');
     }
 
-    alert(idEditando ? 'Contato atualizado!' : 'Contato criado!');
+    alert(idEditando ? 'Cardapio atualizado!' : 'Cardapio criado!');
     idEditando = null;
     form.reset();
     carregarContatos();
 
   } catch (error) {
-    alert('Erro ao salvar contato: ' + error.message);
+    alert('Erro ao salvar cardapio: ' + error.message);
   }
 });
 
 // Excluir contato
 async function excluirContato(id) {
-  if (!confirm('Deseja realmente excluir este contato?')) return;
+  if (!confirm('Deseja realmente excluir este cardapio?')) return;
 
   try {
     const resposta = await fetch(`${API_BASE_URL}/contatos/${id}`, {
@@ -90,10 +90,10 @@ async function excluirContato(id) {
 
     if (!resposta.ok) throw new Error('Falha ao excluir');
 
-    alert('Contato excluído!');
+    alert('Cardapio excluído!');
     carregarContatos();
   } catch (error) {
-    alert('Erro ao excluir contato: ' + error.message);
+    alert('Erro ao excluir cardapio: ' + error.message);
   }
 }
 
@@ -105,18 +105,18 @@ async function editarContato(id) {
 
     const contato = contatos.find(c => c._id === id);
     if (!contato) {
-      alert('Contato não encontrado');
+      alert('Cardapio não encontrado');
       return;
     }
 
-    document.getElementById('nome').value = contato.nome;
-    document.getElementById('email').value = contato.email;
-    document.getElementById('telefone').value = contato.telefone;
+    document.getElementById('nome').value = contato.nome_comida;
+    document.getElementById('email').value = contato.bebidas;
+    document.getElementById('telefone').value = contato.sobremesas;
 
     idEditando = id;
 
   } catch (error) {
-    alert('Erro ao buscar contato para editar: ' + error.message);
+    alert('Erro ao buscar cardapio para editar: ' + error.message);
   }
 }
 window.editarContato = editarContato;

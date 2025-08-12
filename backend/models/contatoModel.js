@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const ContatoSchema = new mongoose.Schema({
-  nome: {
+  nome_comida: {
     type: String,
     required: true
   },
-  email: String,
-  telefone: String
+  bebidas: String,
+  sobremesas: String
 });
 
 module.exports = mongoose.model('Contato', ContatoSchema);

@@ -8,15 +8,15 @@ const {
 } = require('../controllers/contatoController');
 
 // Rota POST - Criar contato
-router.post('/contatos', criarContato);
+router.post('/cardapio', criarContato);
 
 // Rota GET - Listar todos os contatos
-router.get('/contatos', listarContatos);
+router.get('/cardapio', listarContatos);
 
 // Rota PUT - Atualizar contato por ID
-router.put('/contatos/:id', atualizarContato);
+router.put('/cardapio/:id', atualizarContato);
 
 // Rota DELETE - Excluir contato por ID
-router.delete('/contatos/:id', deletarContato);
+router.delete('/cardapio/:id', deletarContato);
 
 module.exports = router;
