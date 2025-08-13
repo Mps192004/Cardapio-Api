@@ -51,13 +51,13 @@ form.addEventListener('submit', async (e) => {
   try {
     let resposta;
     if (idEditando) {
-      resposta = await fetch(`${API_BASE_URL}/contatos/${idEditando}`, {
+      resposta = await fetch(`${API_BASE_URL}/cardapio/${idEditando}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contato)
       });
     } else {
-      resposta = await fetch(`${API_BASE_URL}/contatos`, {
+      resposta = await fetch(`${API_BASE_URL}/cardapio`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contato)
@@ -84,7 +84,7 @@ async function excluirContato(id) {
   if (!confirm('Deseja realmente excluir este cardapio?')) return;
 
   try {
-    const resposta = await fetch(`${API_BASE_URL}/contatos/${id}`, {
+    const resposta = await fetch(`${API_BASE_URL}/cardapio/${id}`, {
       method: 'DELETE'
     });
 
@@ -100,7 +100,7 @@ async function excluirContato(id) {
 // Editar contato
 async function editarContato(id) {
   try {
-    const resposta = await fetch(`${API_BASE_URL}/contatos`);
+    const resposta = await fetch(`${API_BASE_URL}/cardapio`);
     const contatos = await resposta.json();
 
     const contato = contatos.find(c => c._id === id);
