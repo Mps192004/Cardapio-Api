@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://crud-api-p93b.onrender.com/api';
+const API_BASE_URL = 'https://cardapio-api-9m6h.onrender.com/api';
 
 const form = document.getElementById('form-contato');
 const tabela = document.getElementById('tabela-contatos');

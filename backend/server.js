@@ -7,14 +7,16 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-  origin: ['https://crud-api-p93b.onrender.com', 'https://crud-api-wheat-mu.vercel.app/'],
+  origin: ['https://cardapio-api-9m6h.onrender.com', 'https://cardapio-api-virid.vercel.app/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 
 // Middleware
+
 app.use(cors());
 app.use(express.json());
+
 
 // Rotas
 const contatoRoutes = require('./routes/contatoRoutes');
