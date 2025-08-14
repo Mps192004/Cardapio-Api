@@ -7,7 +7,7 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-  origin: ['https://cardapio-api-9m6h.onrender.com', 'https://cardapio-api-virid.vercel.app/'],
+  origin: ['https://cardapio-api-9m6h.onrender.com', 'https://cardapio-api-virid.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));

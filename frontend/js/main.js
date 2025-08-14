@@ -28,7 +28,7 @@ async function carregarContatos() {
 
       tabela.appendChild(linha);
     });
-  } catch (error) {
+  } catch (error) { 
     alert('Erro ao carregar Cardapio: ' + error.message);
   }
 }
